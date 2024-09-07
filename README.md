@@ -53,34 +53,34 @@
 
     h. Setelah itu, saya membuat routing URL aplikasi `main` untuk mengatur rute URL spesifik untuk fitur-fitur dalam aplikasi tersebut. 
 
-        ```python
-            from django.urls import path
-            from main.views import show_main
+    ```python
+        from django.urls import path
+        from main.views import show_main
 
-            app_name = 'main'
+        app_name = 'main'
 
-            urlpatterns = [
-                path('', show_main, name='show_main'),
-            ]
-        ```
+        urlpatterns = [
+            path('', show_main, name='show_main'),
+        ]
+    ```
 
     i. Kemudian, saya membuat routing di tingkat proyek agar proyek saya dapat menjalankan aplikasi `main` dengan menambahkan path `/`ke `urls.py` proyek.
 
-        ```python
-            from django.contrib import admin
-            from django.urls import path, include
+    ```python
+        from django.contrib import admin
+        from django.urls import path, include
 
-            urlpatterns = [
-                path('', include('main.urls')),
-                path('admin/', admin.site.urls),
-            ]
-        ```
+        urlpatterns = [
+            path('', include('main.urls')),
+            path('admin/', admin.site.urls),
+        ]
+    ```
 
 2. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara `urls.py`, `views.py`, `models.py`, dan berkas `html`.
 
     **JAWAB**:
 
-    ![Diagram](diagrams/diagram.png)
+    ![Diagram](diagram/diagram.png)
 
     a. Client membuka aplikasi tersebut melalui browser dengan mengirimkan _request_ ke _main_ URL (`/`) yang kemudian diterima oleh URL routing (`urls.py`).
 
