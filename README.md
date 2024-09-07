@@ -29,7 +29,7 @@
             category = models.CharField(max_length=100)
             featured = models.BooleanField()
     ```
-    Namun, saat masa Tugas 1 ini, atribut model diatas masih _subject to change_, karena proyeknya belum dikerjakan. Namun, saya sudah melakukan migrasi model ke dalam basis data lokal.
+    Namun, saat masa Tugas 2 ini, atribut model diatas masih _subject to change_, karena proyeknya belum dikerjakan. Namun, saya sudah melakukan migrasi model ke dalam basis data lokal.
 
     f. Setelah itu, buat folder baru di dalam aplikasi `main` bernama `templates` berisi `main.html` yang dapat menampilkan data dari model `Product`.
 
