@@ -94,33 +94,33 @@
 
     **JAWAB**:
 
-    a. **Version Control** 
+    a. **Version Control**:
         Git melacak setiap perubahan kode, sehingga memungkinkan developer riwayat versi pengembangan dan memungkinkan untuk beralih ke versi sebelumnya, contohnya menggunakan command `commit`, `reset`, dan `checkout`.
 
-    b. **Collaboration**
+    b. **Collaboration**:
         Git memungkinkan kolaborasi antar developer yang bekerja pada suatu projek yang sama. Dengan `branching` dan `merging`, para developer dapat bekerjasama tanpa mengganggu pekerjaan satu sama lain.
 
-    c. **Deployment**
+    c. **Deployment**:
         Git memungkinkan developer untuk melakukan _deployment_ ke _production server_ secara mudah melalui command `push` untuk mengirim versi terbaru dan `pull` untuk menerima versi terbaru.
 
 4. Menurut Anda, dari semua framework yang ada, mengapa framework Django dijadikan permulaan pembelajaran pengembangan perangkat lunak?
 
     **JAWAB**:
 
-    a. **Fitur Bawaan**
+    a. **Fitur Bawaan**:
         Dengan fitur bawaan yang _beginner-friendly_ seperti pengelolaan basis data, autentikasi, dan manajemen admin, pemula diharapkan dapat lebih mudah memahami konsep dasar pengembangan perangkat lunak.
 
-    b. **Struktur**
+    b. **Struktur**:
         Dengan mengikuti pola MVT (Model-View-Template), para pemula diharapkan lebih memahami struktur arsitektur web dan dapat lebih mudah memisahkan logika _back-end_ dan _front-end_.
     
-    c. **Keamanan**
+    c. **Keamanan**:
         Django dilengkapi fitur keamanan bawaan yang dapat melindungi dari serangan siber, seperti XSS, SQL Injection, MitM, dll.
 
-    d. **Skalabilitas**
+    d. **Skalabilitas**:
         Django dirancang untuk menangani aplikasi web yang besar dan kompleks, sehingga pemula juga dapat belajar cara me-_maintain_ suatu aplikasi kompleks yang terus berkembang.
 
-    e. **ORM Bawaan**
-        Django secara otomatis memberikan API abstraksi basis data yang memungkinkan user untuk membuat, menerima, mengupdate, dan menghapus objek. Dengan demikian, pemula tidak perlu berhadapan langsung dengan SQL mentah. 
+    e. **ORM Bawaan**:
+        Django secara otomatis memberikan API abstraksi basis data yang memungkinkan user untuk membuat, menerima, mengupdate, dan menghapus objek. Dengan demikian, pemula tidak perlu berhadapan langsung dengan SQL mentah (raw SQL). 
 
 5. Mengapa model pada Django disebut sebagai _ORM_?
 
