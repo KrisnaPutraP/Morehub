@@ -82,7 +82,7 @@
 
     ![Diagram](diagram/diagram.jpg)
 
-    a. Client mengirimkan _request_ halaman utama ke browser yang diarahkan kepada URL routing (urls.py) yang berada di tingkat proyek.
+    a. Client mengirimkan _request_ halaman utama ke browser yang diarahkan kepada URL routing (`urls.py`) yang berada di tingkat proyek.
 
     b. _Request_ tersebut diterima dan kemudian fungsi show_main() di `views.py` dipanggil.
 
