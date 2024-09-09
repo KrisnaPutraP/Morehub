@@ -80,7 +80,7 @@
 
     **JAWAB**:
 
-    ![Diagram](diagram/diagram.png)
+    ![Diagram](diagram/diagram.jpg)
 
     a. Client membuka aplikasi tersebut melalui browser dengan mengirimkan _request_ ke _main_ URL (`/`) yang kemudian diterima oleh URL routing (`urls.py`).
 
