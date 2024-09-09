@@ -111,20 +111,17 @@
 
     **JAWAB**:
 
-    a. **Fitur Bawaan**:
-    Dengan fitur bawaan yang _beginner-friendly_ seperti pengelolaan basis data, autentikasi, dan manajemen admin, pemula diharapkan dapat lebih mudah memahami konsep dasar pengembangan perangkat lunak.
+    a. **_Built-in Features_**:
+    Dengan fitur bawaan yang _beginner-friendly_ seperti pengelolaan basis data, autentikasi, dan manajemen admin, pemula diharapkan dapat lebih mudah memahami konsep dasar pengembangan perangkat lunak. Bahkan, django juga memiliki fitur keamanan bawaan yang dapat mencegah serangan siber seperti SQL Injection dan MitM. Namun, _developer_ tetap harus mempelajari dan mengimplementasikan keamanan siber lebih lanjut untuk membuat proyek yang lebih serius.
 
     b. **Struktur**:
-    Dengan mengikuti pola MVT (Model-View-Template), para pemula diharapkan lebih memahami struktur arsitektur web dan dapat lebih mudah memisahkan logika _back-end_ dan _front-end_.
+    Pola MVT (Model-View-Template) yang dengan jelas memisahkan logika _back-end_ dan _front-end_, memudahkan pemula untuk memahami organisasi dan struktur web, serta membantu pemula dalam pengembangan web yang lebih kompleks.
     
-    c. **Keamanan**:
-    Django dilengkapi fitur keamanan bawaan yang dapat melindungi dari serangan siber, seperti XSS, SQL Injection, MitM, dll.
+    c. **Skalabilitas**:
+    Kebanyakan proyek yang menggunakan django merupakan proyek web besar dan kompleks yang berkelanjutan. Django dirancang sedemikian rupa sehingga proses CI/CD dapat dilakukan dengan mudah. Dengan demikian, pemula juga dapat belajar cara me-_maintain_ suatu aplikasi web kompleks yang terus berkembang dan berkelanjutan.
 
-    d. **Skalabilitas**:
-    Django dirancang untuk menangani aplikasi web yang besar dan kompleks, sehingga pemula juga dapat belajar cara me-_maintain_ suatu aplikasi kompleks yang terus berkembang.
-
-    e. **ORM Bawaan**:
-    Django secara otomatis memberikan API abstraksi basis data yang memungkinkan user untuk membuat, menerima, mengupdate, dan menghapus objek. Dengan demikian, pemula tidak perlu berhadapan langsung dengan SQL mentah (raw SQL). 
+    d. **ORM Bawaan**:
+    Django secara otomatis memberikan API abstraksi basis data yang memungkinkan user untuk membuat, menerima, mengupdate, dan menghapus objek. Dengan demikian, pemula tidak perlu berhadapan langsung dengan _raw_ SQL. 
 
 5. Mengapa model pada Django disebut sebagai _ORM_?
 
