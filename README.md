@@ -80,7 +80,7 @@
 
     **JAWAB**:
 
-    ![Diagram](diagram/diagram.jpg)
+    ![Diagram](diagram/diagram.png)
 
     a. Client mengirimkan _request_ halaman utama ke browser yang diarahkan kepada URL routing (`urls.py`) yang berada di tingkat proyek.
 
@@ -120,8 +120,8 @@
     c. **Skalabilitas**:
     Kebanyakan proyek yang menggunakan django merupakan proyek web besar dan kompleks yang berkelanjutan. Django dirancang sedemikian rupa sehingga proses CI/CD dapat dilakukan dengan mudah. Dengan demikian, pemula juga dapat belajar cara me-_maintain_ suatu perangkat lunak yang terus berkembang dan berkelanjutan.
 
-    d. **ORM Bawaan**:
-    Django secara otomatis memberikan API abstraksi basis data yang memungkinkan user untuk membuat, menerima, mengupdate, dan menghapus objek. Dengan demikian, pemula tidak perlu berhadapan langsung dengan _raw_ SQL. 
+    d. **_Built-in_ ORM**:
+    Django secara otomatis memberikan API abstraksi basis data (ORM) yang memungkinkan user untuk membuat, menerima, mengupdate, dan menghapus objek. Dengan demikian, pemula tidak perlu berhadapan langsung dengan _raw_ SQL. 
 
 5. Mengapa model pada Django disebut sebagai _ORM_?
 
