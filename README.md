@@ -82,13 +82,17 @@
 
     ![Diagram](diagram/diagram.jpg)
 
-    a. Client membuka aplikasi tersebut melalui browser dengan mengirimkan _request_ ke _main_ URL (`/`) yang kemudian diterima oleh URL routing (`urls.py`).
+    a. Client mengirimkan _request_ halaman utama ke browser yang diarahkan kepada URL routing (urls.py) yang berada di tingkat proyek.
 
-    b. Setelah itu, _request_ tersebut diarahkan ke show_main() di `views.py`. Perhatikan bahwa path `/` ditulis dengan `''` di `urls.py`.
+    b. _Request_ tersebut diterima dan kemudian fungsi show_main() di `views.py` dipanggil.
 
-    c. Fungsi show_main() yang sudah memiliki pre-defined model (context), kini bisa mengisi `templates/main.html` dengan konten yang ada pada context tersebut.
+    c. Setelah itu, fungsi show_main() yang sudah memiliki pre-defined model (context), dapat berinteraksi dengan ORM maupun basis data (melakukan operasi _read_/_write_) untuk mengakses/mengubah data yang nantinya akan ditampilkan. Namun, pada saat ini saya mengerjakan tugas ini, belum ada implementasi ORM/basis data.
 
-    d. `main.html` di-_render_ oleh `views.py` dan dikirimkan sebagai `response` ke client melalui browser. 
+    d. Kemudian, pemanggilan fungsi show_main() pada `views.py` yang sudah berisi data akan diteruskan ke `templates/main.html`. 
+
+    e. Jika tidak terjadi error, `main.html` akan dikirim kembali ke browser sebagai _response_ sebagai halaman utama yang di-_request_ client.
+
+    f. Halaman utama yang sudah berisi `main.html` ditampilkan di browser Client.
 
 3. Jelaskan fungsi `git` dalam pengembangan perangkat lunak!
 
