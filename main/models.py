@@ -1,6 +1,8 @@
+import uuid
 from django.db import models
 
 class Product(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.TextField()
     price = models.DecimalField(decimal_places=2, max_digits=100)
     description = models.TextField()

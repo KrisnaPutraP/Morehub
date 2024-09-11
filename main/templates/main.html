@@ -1,3 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+
 <head>
     <title>Morehub</title>
 </head>
@@ -6,7 +9,7 @@
     <h1>Welcome to Morehub!</h1>
     <h3>A place where you keeps coming for more...</h3>
 
-    <h5>Name: </h5>
+    <!-- <h5>Name: </h5>
     <p>{{ name }}<p>
     <h5>Price: </h5>
     <p>{{ price }}<p>
@@ -17,5 +20,43 @@
     <h5>Category: </h5>
     <p>{{ category }}<p>
     <h5>Featured: </h5>
-    <p>{{ featured }}<p>
+    <p>{{ featured }}<p> -->
+    
+    {% if not products %}
+    <p>Belum ada data produk pada Morehub! .</p>
+    {% else %}
+    <table>
+        <tr>
+        <th>Product Name</th>
+        <th>Time</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Quantity</th>
+        <th>Category</th>
+        <th>Featured</th>
+        </tr>
+    
+        {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini 
+        {% endcomment %} 
+        {% for product in products %}
+        <tr>
+        <td>{{product.name}}</td>
+        <td>{{mood_entry.time}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.description}}</td>
+        <td>{{product.quantity}}</td>
+        <td>{{product.category}}</td>
+        <td>{{product.featured}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    
+    <br />
+    
+    <a href="{% url 'main:create_product' %}">
+        <button>Add New Products</button>
+    </a>
 </body>
+
+{% endblock content %}
