@@ -7,12 +7,7 @@ from django.core import serializers
 def show_main(request):
     products = Product.objects.all()
     context = {
-        'name': 'Panci',
-        'price': '5000',
-        'description': 'Panci buat mentung orang',
-        'quantity': '10',
-        'category': 'Dapur',
-        'featured': True,
+        'title': 'Keeps you coming for more!',
         'products': products
     }
 

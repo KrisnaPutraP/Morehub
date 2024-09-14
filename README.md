@@ -2,7 +2,12 @@
 
 ## [Visit Morehub Right Now!](http://krisna-putra-morehub.pbp.cs.ui.ac.id/)
 
-### Pertanyaan
+### Morehub.com, a Platform-Based Programming project, made by:
+- Nama: Krisna Putra Purnomo
+- NPM: 2306228756
+- Kelas: PBP E
+
+### Pertanyaan Tugas 2
 
 1. Jelaskan bagaimana cara kamu mengimplementasikan _checklist_ di atas secara _step-by-step_ (bukan hanya sekadar mengikuti tutorial).
 
@@ -29,7 +34,7 @@
             category = models.CharField(max_length=100)
             featured = models.BooleanField()
     ```
-    Namun, saat masa Tugas 2 ini, atribut model diatas masih _subject to change_, karena proyeknya belum dikerjakan. Namun, saya sudah melakukan migrasi model ke dalam basis data lokal.
+    Namun, saat masa Tugas 2 ini, atribut model di atas masih _subject to change_, karena proyeknya belum dikerjakan. Namun, saya sudah melakukan migrasi model ke dalam basis data lokal.
 
     f. Setelah itu, buat folder baru di dalam aplikasi `main` bernama `templates` berisi `main.html` yang dapat menampilkan data dari model `Product`.
 
@@ -129,25 +134,151 @@
 
     Model pada Django disebut ORM karena mereka menghubungkan struktur objek dalam kode python dengan tabel-tabel dalam database relasional, seperti halnya pada SQL.
 
+### Pertanyaan Tugas 3
 
-## Checklist Tugas
+1. Jelaskan mengapa kita memerlukan _data delivery_ dalam pengimplementasian sebuah platform?
 
--   [x] Membuat sebuah proyek Django baru.
--   [x] Membuat aplikasi dengan nama `main` pada proyek tersebut.
--   [x] Melakukan _routing_ pada proyek agar dapat menjalankan aplikasi `main`.
--   [x] Membuat model pada aplikasi `main` dengan nama `Product` dan memiliki atribut wajib sebagai berikut.
-    -   `name`
-    -   `price`
-    -   `description`
--   [x] Membuat sebuah fungsi pada `views.py` untuk dikembalikan ke dalam sebuah _template_ HTML yang menampilkan nama aplikasi serta nama dan kelas kamu.
--   [x] Membuat sebuah _routing_ pada `urls.py` aplikasi `main` untuk memetakan fungsi yang telah dibuat pada `views.py`.
--   [x] Melakukan _deployment_ ke PWS terhadap aplikasi yang sudah dibuat sehingga nantinya dapat diakses oleh teman-temanmu melalui Internet.
--   [x] Membuat sebuah `README.md` yang berisi tautan menuju aplikasi PWS yang sudah di- _deploy_ , serta jawaban dari beberapa pertanyaan berikut.
-    -   Jelaskan bagaimana cara kamu mengimplementasikan _checklist_ di atas secara _step-by-step_ (bukan hanya sekadar mengikuti tutorial).
-    -   Buatlah bagan yang berisi _request client_ ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara `urls.py`, `views.py`, `models.py`, dan berkas `html`.
-    -   Jelaskan fungsi `git` dalam pengembangan perangkat lunak!
-    -   Menurut Anda, dari semua framework yang ada, mengapa framework Django dijadikan permulaan pembelajaran pengembangan perangkat lunak?
-    -   Mengapa model pada Django disebut sebagai _ORM_?
+    **JAWAB**:
+
+    _Data delivery_ dibutuhkan ketika kita ingin mengirimkan data dari satu _stack_ ke _stack_ lainnya. Hal tersebut sangat krusial di banyak aplikasi web modern yang membutuhkan _update_ data secara _real-time_. Selain itu, _data delivery_ yang efisien merupakan salah kunci dalam performa UX (_User Experience_). _Data delivery_ yang baik membuat _user_ menerima konten dengan cepat dan responsif, menciptakan pengalaman yang lebih baik dan menarik bagi _user_. Sebaliknya, _data delivery_ yang buruk dapat membuat waktu _loading_ menjadi lambat dan dapat membuat _user_ kesal.
+
+2. Menurutmu, mana yang lebih baik antara XML dan JSON? Mengapa JSON lebih populer dibandingkan XML?
+
+    **JAWAB**:
+
+    Menurut saya, JSON lebih baik dari XML. Misalnya, dari segi sintaks, JSON lebih pendek dan simpel. Selain itu, JSON dapat di-_parse_ menggunakan fungsi JavaScript biasa, sedangkan XML harus di-_parse_ menggunakan XML _parser_. Alasan JSON lebih populer di dunia _web development_ dibandingkan XML adalah karena JSON banyak digunakan untuk pertukaran data, khususnya bersama JavaScript asinkronus (AJAX) dan REST API, teknik pemrograman dan API yang paling umum digunakan.
+
+3. Jelaskan fungsi dari method `is_valid()` pada form Django dan mengapa kita membutuhkan method tersebut?
+
+    **JAWAB**:
+
+    Fungsi `form.is_valid()` pada Django berfungsi untuk memvalidasi input, berdasarkan tipe data (Misal IntegerField, TextField), _constraints_ (Misal, required=True, max_length), atau _custom validator_. Method ini akan mengembalikan nilai Boolean, yang berfungsi sebagai _error handler_ yang akan me-_return_ False jika validasi gagal dan menampilkan atribut `form.errors`, dan mengembalikan True jika semua validasi berhasil.
+
+4. Mengapa kita membutuhkan `csrf_token` saat membuat form di Django? Apa yang dapat terjadi jika kita tidak menambahkan `csrf_token` pada form Django? Bagaimana hal tersebut dapat dimanfaatkan oleh penyerang?
+
+    **JAWAB**:
+
+    Kita membutuhkan `csrf_token` untuk memberi perlindungan terhadap serangan siber bertipe CSRF (Cross-Site Request Forgery), dimana penyerang mencoba memaksa _user_ yang telah login untuk mengirimkan _request_ yang tidak diinginkan ke aplikasi web tanpa sepengetahuan mereka. Jika kita tidak menambahkan token tersebut pada form Django, aplikasi web kita rentan terhadap serangan CSRF. Penyerang dapat membuat pengguna secara tidak sadar melakukan tindakan berbahaya, seperti mengubah kata sandi, melakukan transfer dana, dan tindakan lainnya hanya dengan mengunjungi situs berbahaya. Hal tersebut dapat dimanfaatkan oleh penyerang dengan mengirimkan permintaan ke aplikasi Django di mana pengguna sudah login. Contohnya, saat _user_ sedang login di aplikasi bank online, lalu membuka halaman berbahaya di tab lain, halaman tersebut bisa mengirim permintaan POST ke aplikasi bank untuk mentransfer uang ke rekening penyerang, karena cookie sesi pengguna akan otomatis dikirim bersama permintaan. Tanpa `csrf_token`, _server_ tidak bisa mendeteksi bahwa permintaan tersebut tidak berasal dari pengguna.
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan _checklist_ di atas secara _step-by-step_ (bukan hanya sekadar mengikuti tutorial).
+
+    **JAWAB**:
+
+    a. Setelah membuat template dasar `base.html` di _root_ folder dan mengubah _Primary Key_ dari Integer menjadi UUID untuk menangani **IDOR** _vulnerability_, saya membuat file `forms.py` pada direktori `main` yang nantinya akan menjadi struktur form yang menerima produk baru.
+
+    ```python
+        from django.forms import ModelForm
+        from main.models import Product
+
+        class ProductForm(ModelForm):
+            class Meta:
+                model = Product
+                fields = ['name', 'price', 'description', 'quantity', 'category', 'featured']
+    ```
+
+    b. Kemudian, saya menambahkan _import_ `redirect` dari `django.shortcuts` pada `views.py` dan tentunya saya juga meng-_import_  `ProductForm` dari `forms.py`.
+
+    c. Masih di file `views.py`, saya menambahkan fungsi dengan parameter `request` baru untuk mengirim _form_ dan menambahkan `Product` jika _form_ yang diisi valid (dicek dengan method `is_valid()`) melalui `request.POST`.
+
+    ```python
+        def create_product(request):
+        form = ProductForm(request.POST or None)
+
+        if form.is_valid():
+            form.save()
+            return redirect('main:show_main')
+        
+        context = {'form': form}
+        return render(request, 'create_product.html', context)
+    ```
+
+    d. Setelah itu, pada fungsi `show_main()` di `views.py`, saya menambahkan fungsi `Product.objects.all()` yang di-_assign_ ke `products` untuk mengambil seluruh objek `Product` dari basis data.
+
+    ```python
+        def show_main(request):
+        products = Product.objects.all()
+        context = {
+            'name': 'Panci',
+            'price': '5000',
+            'description': 'Panci buat mentung orang',
+            'quantity': '10',
+            'category': 'Dapur',
+            'featured': True,
+            'products': products
+        }
+
+        return render(request, "main.html", context)
+    ```
+    Objek yang saya buat di atas hanya contoh.
+
+    e. Kemudian, saya meng-_import_ fungsi `create_product` ke `urls.py` agar saya dapat menambahkannya ke `urlpatterns`.
+
+    f. Setelah itu, saya membuat file HTML baru `create_product.html` sebagai template form yang akan mengirim _request_ ke _view_ `create_product(request)`. Saya juga menampilkan data `product` dalam bentuk tabel dan tombol "Add Product" yang akan _redirect_ ke halaman _form_.
+
+    g. Kemudian, saya akan membuat empat buah fungsi pada `views.py` di `main` yang masing-masing akan mengembalikan data dalam bentuk JSON, XML, JSON berdasarkan ID, dan XML berdasarkan ID. Namun sebelum itu, saya harus menambahkan _import_ `HttpResponse` untuk merespon HTTP dan `Serializer` untuk menerjemahkan objek model menjadi format lain (XML dan JSON).
+
+    h. Setelah itu, saya membuat masing-masing fungsi yang akan mengembalikan data sesuai yang saya jelaskan pada langkah sebelumnya.
+
+    ```python 
+        def show_xml(request):
+        data = Product.objects.all()
+        return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+
+        def show_json(request):
+            data = Product.objects.all()
+            return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+        def show_xml_by_id(request, id):
+            data = Product.objects.filter(pk=id)
+            return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+
+        def show_json_by_id(request, id):
+            data = Product.objects.filter(pk=id)
+            return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+    ```
+
+    Perhatikan bahwa `content_type` disesuaikan dengan bentuk data yang akan dikembalikan.
+
+    i. Kemudian, saya membuat _routing_ URL untuk masing-masing `views` yang telah saya tambahkan pada langkah sebelumnya. _Routing_ tersebut dikelola pada `urls.py` di `main`, yang akan meng-_handle_ semua pola URL yang akan mengembalikan data yang diinginkan.
+
+    ```python
+        from django.urls import path
+        from main.views import show_main, create_product, show_xml, show_json, show_xml_by_id, show_json_by_id
+
+        app_name = 'main'
+
+        urlpatterns = [
+            path('', show_main, name='show_main'),
+            path('create-product', create_product, name='create_product'),
+            path('xml/', show_xml, name='show_xml'),
+            path('json/', show_json, name='show_json'),
+            path('xml/<str:id>', show_xml_by_id, name='show_xml_by_id'),
+            path('json/<str:id>', show_json_by_id, name='show_json_by_id'),
+        ]
+    ```
+
+    Perhatikan bahwa saya meng-_import_ terlebih dahulu semua fungsi yang berada di `views.py` untuk dapat melakukan _call_ pada setiap pola URL yang didefinisikan.
+
+6.  Mengakses keempat URL di poin 2 menggunakan Postman, membuat _screenshot_ dari hasil akses URL pada Postman, dan menambahkannya ke dalam `README.md`.
+
+    a. `show_xml()`
+
+    ![show_xml](postman/show_xml.png)
+
+    b. `show_json()`
+
+    ![show_json](postman/show_json.png)
+
+    c. `show_xml_by_id()`
+
+    ![show_xml_by_id](postman/show_xml_by_id.png)
+
+    d. `show_json_by_id`
+
+    ![show_json_by_id](postman/show_json_by_id.png)
+
+
+
 
 
 

@@ -3,60 +3,136 @@
 
 <head>
     <title>Morehub</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff; 
+            color: #333333; 
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            text-align: center;
+            background-color: #f8f9fa;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h1 {
+            color: #ff4500;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            color: #333333;
+            margin-bottom: 30px;
+        }
+
+        .no-products {
+            color: #ff4500;
+            font-size: 1.2em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        table, th, td {
+            border: 1px solid #dddddd;
+        }
+
+        th {
+            background-color: #ff4500;
+            color: #ffffff;
+        }
+
+        td {
+            padding: 15px;
+            color: #333333;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ffdab9;
+        }
+
+        button {
+            background-color: #ff4500;
+            color: #ffffff;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff6347;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+
+            table, th, td {
+                font-size: 14px;
+            }
+
+            button {
+                width: 100%;
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Welcome to Morehub!</h1>
-    <h3>A place where you keeps coming for more...</h3>
+    <div class="container">
+        <h1>Welcome to Morehub!</h1>
+        <h3>More Choice, More Possibilities.</h3>
 
-    <!-- <h5>Name: </h5>
-    <p>{{ name }}<p>
-    <h5>Price: </h5>
-    <p>{{ price }}<p>
-    <h5>Description: </h5>
-    <p>{{ description }}<p>
-    <h5>Quantity: </h5>
-    <p>{{ quantity }}<p></p>
-    <h5>Category: </h5>
-    <p>{{ category }}<p>
-    <h5>Featured: </h5>
-    <p>{{ featured }}<p> -->
-    
-    {% if not products %}
-    <p>Belum ada data produk pada Morehub! .</p>
-    {% else %}
-    <table>
-        <tr>
-        <th>Product Name</th>
-        <th>Time</th>
-        <th>Price</th>
-        <th>Description</th>
-        <th>Quantity</th>
-        <th>Category</th>
-        <th>Featured</th>
-        </tr>
-    
-        {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini 
-        {% endcomment %} 
-        {% for product in products %}
-        <tr>
-        <td>{{product.name}}</td>
-        <td>{{mood_entry.time}}</td>
-        <td>{{product.price}}</td>
-        <td>{{product.description}}</td>
-        <td>{{product.quantity}}</td>
-        <td>{{product.category}}</td>
-        <td>{{product.featured}}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    {% endif %}
-    
-    <br />
-    
-    <a href="{% url 'main:create_product' %}">
-        <button>Add New Products</button>
-    </a>
+        {% if not products %}
+        <p class="no-products">Belum ada data produk pada Morehub!</p>
+        {% else %}
+        <table>
+            <tr>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Category</th>
+                <th>Featured</th>
+            </tr>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.quantity }}</td>
+                <td>{{ product.category }}</td>
+                <td>{{ product.featured }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+
+        <a href="{% url 'main:create_product' %}">
+            <button>Add New Products</button>
+        </a>
+    </div>
 </body>
 
 {% endblock content %}
