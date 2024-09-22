@@ -7,8 +7,8 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #ffffff; 
-            color: #333333; 
+            background-color: #ffffff;
+            color: #333333;
             margin: 0;
             padding: 0;
         }
@@ -32,6 +32,12 @@
         h3 {
             color: #333333;
             margin-bottom: 30px;
+        }
+
+        .identity {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            color: #555;
         }
 
         .no-products {
@@ -82,6 +88,16 @@
             background-color: #ff6347;
         }
 
+        .logout-section {
+            margin-top: 30px;
+        }
+
+        .last-login {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
         @media screen and (max-width: 768px) {
             .container {
                 width: 95%;
@@ -101,8 +117,12 @@
 
 <body>
     <div class="container">
-        <h1>Welcome to Morehub!</h1>
+        <h1>Welcome to Morehub, {{ name }}!</h1>
         <h3>More Choice, More Possibilities.</h3>
+
+        <div class="identity">
+            <p>Made by: {{ my_name }} | NPM: {{ NPM }} | Class: {{ class }}</p>
+        </div>
 
         {% if not products %}
         <p class="no-products">Belum ada data produk pada Morehub!</p>
@@ -132,6 +152,13 @@
         <a href="{% url 'main:create_product' %}">
             <button>Add New Products</button>
         </a>
+
+        <div class="logout-section">
+            <a href="{% url 'main:logout' %}">
+                <button>Logout</button>
+            </a>
+            <p class="last-login">Last login: {{ last_login }}</p>
+        </div>
     </div>
 </body>
 
