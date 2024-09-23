@@ -7,6 +7,11 @@
 - NPM: 2306228756
 - Kelas: PBP E
 
+### Redirect 
+- [Tugas 2](#pertanyaan-tugas-2)
+- [Tugas 3](#pertanyaan-tugas-3)
+- [Tugas 4](#pertanyaan-tugas-4)
+
 ### Pertanyaan Tugas 2
 
 1. Jelaskan bagaimana cara kamu mengimplementasikan _checklist_ di atas secara _step-by-step_ (bukan hanya sekadar mengikuti tutorial).
