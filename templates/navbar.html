@@ -13,7 +13,7 @@
       <!-- Desktop menu -->
       <div class="hidden md:flex items-center space-x-4">
         <a href="{% url 'main:show_main' %}" class="text-white hover:bg-red-700 px-3 py-2 rounded-md text-sm font-medium">Home</a>
-        <a href="#" class="text-white hover:bg-red-700 px-3 py-2 rounded-md text-sm font-medium">Products</a>
+        <a href="#" class="text-white hover:bg-red-700 px-3 py-2 rounded-md text-sm font-medium">Featured</a>
         <a href="#" class="text-white hover:bg-red-700 px-3 py-2 rounded-md text-sm font-medium">Categories</a>
         <a href="#" class="text-white hover:bg-red-700 px-3 py-2 rounded-md text-sm font-medium">Cart</a>
         {% if user.is_authenticated %}
@@ -68,7 +68,7 @@
   <div class="mobile-menu hidden md:hidden">
     <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
       <a href="{% url 'main:show_main' %}" class="text-white hover:bg-red-700 block px-3 py-2 rounded-md text-base font-medium">Home</a>
-      <a href="#" class="text-white hover:bg-red-700 block px-3 py-2 rounded-md text-base font-medium">Products</a>
+      <a href="#" class="text-white hover:bg-red-700 block px-3 py-2 rounded-md text-base font-medium">Featured</a>
       <a href="#" class="text-white hover:bg-red-700 block px-3 py-2 rounded-md text-base font-medium">Categories</a>
       <a href="#" class="text-white hover:bg-red-700 block px-3 py-2 rounded-md text-base font-medium">Cart</a>
       {% if user.is_authenticated %}

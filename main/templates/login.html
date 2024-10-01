@@ -5,31 +5,32 @@
 {% endblock meta %}
 
 {% block content %}
-<body class="bg-gray-100">
-  <div class="w-full max-w-md mx-auto mt-8 bg-white p-8 rounded-lg shadow-lg">
-    <h1 class="text-3xl text-orange-500 mb-6 text-center font-bold">Login</h1>
+{% include 'navbar.html' %}
+<div class="overflow-x-hidden px-4 md:px-8 pb-8 pt-24 min-h-screen bg-gray-100 flex flex-col items-center justify-center bg-pattern">
+  <div class="w-full max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg">
+    <h1 class="text-4xl text-orange-800 mb-6 text-center font-extrabold drop-shadow-md">Login</h1>
     
     <form method="POST" class="w-full">
       {% csrf_token %}
 
       <div class="mb-5">
         <label for="{{ form.username.id_for_label }}" class="block text-gray-700 font-semibold mb-2">Username:</label>
-        <div class="mb-5">
+        <div class="mb-2">
           <input type="text" name="username" id="{{ form.username.id_for_label }}" 
                  class="w-full border border-gray-300 focus:border-orange-500 focus:ring focus:ring-orange-300 rounded-md p-2" 
                  placeholder="Enter your username" required>
         </div>
-        <div class="text-xs text-gray-500 mt-1">{{ form.username.help_text }}</div>
+        <div class="text-xs text-gray-500">{{ form.username.help_text }}</div>
       </div>
 
       <div class="mb-5">
         <label for="{{ form.password.id_for_label }}" class="block text-gray-700 font-semibold mb-2">Password:</label>
-        <div class="mb-5">
+        <div class="mb-2">
           <input type="password" name="password" id="{{ form.password.id_for_label }}" 
                  class="w-full border border-gray-300 focus:border-orange-500 focus:ring focus:ring-orange-300 rounded-md p-2" 
                  placeholder="Enter your password" required>
         </div>
-        <div class="text-xs text-gray-500 mt-1">{{ form.password.help_text }}</div>
+        <div class="text-xs text-gray-500">{{ form.password.help_text }}</div>
       </div>
 
       {% if messages %}
@@ -40,13 +41,13 @@
       </ul>
       {% endif %}
 
-      <div class="text-center">
-        <input type="submit" value="Login!" class="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition ease-in-out duration-300 cursor-pointer" />
+      <div class="text-center mt-6">
+        <input type="submit" value="Login!" class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 shadow-lg hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-orange-300 cursor-pointer" />
       </div>
     </form>
 
     <p class="mt-6 text-gray-700 text-sm text-center">Don't have an account yet?</p>
-    <a href="{% url 'main:register' %}" class="block mt-2 text-blue-500 hover:underline text-center">Register Now</a>
+    <a href="{% url 'main:register' %}" class="block mt-2 text-orange-600 hover:text-orange-700 hover:underline text-center font-semibold">Register Now</a>
   </div>
-</body>
+</div>
 {% endblock content %}
