@@ -11,6 +11,7 @@
 - [Tugas 2](#pertanyaan-tugas-2)
 - [Tugas 3](#pertanyaan-tugas-3)
 - [Tugas 4](#pertanyaan-tugas-4)
+- [Tugas 5](#pertanyaan-tugas-5)
 
 ### Pertanyaan Tugas 2
 
@@ -414,9 +415,9 @@
             form = ProductForm(request.POST or None)
 
             if form.is_valid() and request.method == "POST":
-                mood_entry = form.save(commit=False)
-                mood_entry.user = request.user
-                mood_entry.save()
+                product_entry = form.save(commit=False)
+                product_entry.user = request.user
+                product_entry.save()
                 return redirect('main:show_main')
             
             context = {'form': form}
@@ -447,11 +448,275 @@
     o. Terakhir, saya mengikuti tutorial dengan memisahkan _environment production_ dengan menyesuaikan variabel `DEBUG` di `settings.py`.
 
 
+### Pertanyaan Tugas 5
+
+1. Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
+
+    **JAWAB**:
+
+    Dalam CSS, urutan prioritas pengambilan CSS selector bergantung pada _specifity_. _Specifity_ adalah cara browser menentukan style mana yang harus diterapkan pada suatu elemen ketika ada beberapa aturan yang bertentangan. Setiap selector memiliki nilainya masing-masing. Urutan prioritas pengambilan CSS selector adalah sebagai berikut:
+
+    a. !important
+    Deklarasi !important pada selector memiliki prioritas tertinggi. Ketika !important ditambahkan pada deklarasi style, aturan tersebut akan mengalahkan aturan lain, bahkan yang memiliki spesifisitas lebih tinggi. 
+    
+    b. Inline styles
+    Inline styles atau styles yang ditulis langsung pada atribut style elemen HTML selalu memiliki prioritas tertinggi, kecuali terhadap !important.
+
+    c. ID selector (#id)
+    Selector yang menggunakan id, _specifity_-nya dibawah inline styles tetapi diatas class selector.
+    
+    d. Class selector (.class), Attribute selector ([attr]), dan Pseudo-class (:hover)
+    Ketiga Selector ini memiliki nilai _specifity_ yang setara.
+
+    e. Element selector (tag) dan Pseudo-element (::before, ::after)
+    Kedua selector ini juga memiliki nilai _specifity_ yang setara, tetapi dibawah class selector.
+
+    f. Universal selector (*) dan Combinators (+, >, ~, " ")
+    Kedua selector ini memiliki prioritas terendah.
+
+    Selain itu, terdapat aturan lain seperti:
+
+    a. Cascading
+    Jika ada dua aturan dengan spesifisitas yang sama, aturan yang ditulis terakhir akan diterapkan.
+
+    b. Inheritance
+    Beberapa properti CSS diwariskan dari elemen induk ke elemen anak. Namun, aturan yang diterapkan langsung pada elemen akan mengalahkan properti yang diwariskan.
+
+    Sebenarnya, terdapat cara untuk menghitung _specifity_. Spesifisitas dihitung sebagai empat angka terpisah, a-b-c-d, di mana:
+    - a = Jumlah inline styles
+    - b = Jumlah ID selectors
+    - c = Jumlah class, attribute, dan pseudo-class selectors
+    - d = Jumlah element dan pseudo-element selectors
+
+    Contoh:
+    ```css
+        #content .data td.highlight {
+        background-color: yellow;
+        }
+    ```
+
+    Spesifisitasnya adalah 0-1-2-1:
+
+    - 0 (inline style)
+    - 1 (ID selector: #content)
+    - 2 (class selectors: .data dan .highlight)
+    - 1 (element selector: td)
+
+2. Mengapa _responsive design_ menjadi konsep yang penting dalam pengembangan aplikasi _web_? Berikan contoh aplikasi yang sudah dan belum menerapkan _responsive design_!
+
+    **JAWAB**:
+
+    Responsive design menjadi konsep yang sangat penting dalam pengembangan aplikasi _web_ masa kini karena pada zaman sekarang, pengguna mengakses web melalui berbagai perangkat dengan ukuran layar yang berbeda-beda, mulai dari smartphone, tablet, laptop, hingga desktop. _Responsive design_ memastikan bahwa pengguna mendapatkan pengalaman yang optimal terlepas dari perangkat yang mereka gunakan. Selain itu, memelihara satu situs responsif lebih efisien daripada memiliki versi terpisah untuk desktop dan mobile.
+
+    Contoh aplikasi yang sudah menerapkan _responsive design_:
+    
+    a. Google
+
+    b. Amazon
+
+    c. The New York Times
+
+    d. Youtube
+
+    e. Situs Web PBP Ganjil 2024/2025
+
+    dan masih banyak lagi, mengingat mayoritas situs di zaman sekarang sudah menerapkan _responsive design_.
+
+    Contoh apikasi yang belum menerapkan _responsive design_:
+
+    a. Situs Server Aren (_auto-grader_ SDA)
+
+    b. Siak NG
+    
+    c. [Contoh yang saya temukan di internet](https://dequeuniversity.com/library/responsive/1-non-responsive)
+    
+3.  Jelaskan perbedaan antara _margin, border,_ dan _padding_, serta cara untuk mengimplementasikan ketiga hal tersebut!
+
+    **JAWAB**:
+
+    - Margin adalah ruang di luar border elemen, yang memisahkan elemen dari elemen-elemen lain di sekitarnya. Margin bersifat transparan.
+    - Border adalah garis yang mengelilingi padding dan konten elemen. Border dapat dilihat tetapi juga bisa dibuat _invisible_.
+    - Padding adalah ruang antara konten elemen dan bordernya. Padding bersifat transparan.
+
+    Berikut adalah cara mengimplementasikan ketiga hal diatas:
+
+    a. Margin
+
+    ```css
+        .element {  /* Selector */
+            margin: 10px;              /* Semua sisi */
+            margin: 10px 20px;         /* Atas-bawah | Kiri-kanan */
+            margin: 10px 20px 15px 25px; /* Atas | Kanan | Bawah | Kiri */
+            margin-top: 15px;         /* Spesifik untuk satu sisi */
+            }
+    ```
+
+    b. Border
+
+    ```css
+        .element {  /* Selector */
+            border: 1px solid black;    /* Lebar | Gaya | Warna */
+            border-width: 2px;          /* Spesifik untuk lebar */
+            border-style: dashed;       /* Spesifik untuk gaya */
+            border-color: red;          /* Spesifik untuk warna */
+            border-radius: 5px;         /* Untuk sudut melengkung */
+            }
+    ```
+
+    c. Padding
+
+    ```css
+        .element {  /* Selector */
+            padding: 10px;              /* Semua sisi */
+            padding: 10px 20px;         /* Atas-bawah | Kiri-kanan */
+            padding: 10px 20px 15px 25px; /* Atas | Kanan | Bawah | Kiri */
+            padding-left: 15px;         /* Spesifik untuk satu sisi */
+            }
+    ```
+
+    Berikut adalah contoh penggunaan ketiganya secara bersama-sama:
+
+    ```css
+        .box {
+            margin: 20px;
+            border: 2px solid blue;
+            padding: 15px;
+            }
+    ```
+
+    Dalam contoh diatas, class box akan memiliki jarak 20px dari elemen lain di sekitarnya, memiliki border berwarna biru solid dengan ketebalan 2px dan konten di dalamnya akan memiliki jarak 15px dari border.
+
+    Baik _margin, border_, dan _padding_ semuanya berkontribusi pada ukuran total elemen. Misalnya jika kita ingin menetapkan lebar elemen 100px dengan padding 10px di kedua sisi, lebar total elemen akan menjadi 120px (100px + 10px + 10px).
+
+4. Jelaskan konsep _flex box_ dan _grid layout_ beserta kegunaannya!
+
+    **JAWAB**:
+
+    a. Flex box adalah metode layout satu dimensi untuk mengatur item dalam baris atau kolom. Flex box memberikan cara yang lebih efisien untuk mendistribusikan ruang dan menyelaraskan konten dalam sebuah container, bahkan ketika ukurannya tidak diketahui atau dinamis. Flexbox sangat berguna ketika kita ingin mengatur tata letak dalam satu dimensi (entah itu horizontal atau vertikal). Misalnya, jika Anda ingin mengatur beberapa elemen di tengah halaman, flexbox adalah pilihan yang bagus. Selain itu, flex box menawarkan lebih banyak fleksibilitas dalam alignment item-item individual.
+
+    Berikut adalah contoh kegunaan flex box:
+    - Menyelaraskan dan mendistribusikan ruang di antara item-item dalam container
+    - Mengubah urutan tampilan item tanpa mengubah HTML
+    - Membuat navigasi bar yang responsif tetapi hanya berada dalam satu baris
+
+    b. Grid layout adalah sistem layout dua dimensi yang memungkinkan pengembang untuk membuat layout kompleks dengan lebih mudah dan konsisten. Grid layout memungkinkan kita untuk mengatur konten dalam baris dan kolom secara bersamaan. Jika kita perlu membagi halaman menjadi beberapa area dengan ukuran dan posisi yang terdefinisi dengan jelas, grid layout adalah pilihan yang baik, karena kita dapat dengan mudah membuat grid dengan baris dan kolom yang berbeda, serta mengatur perubahan ukuran pada setiap sel. Sehingga, grid layout memberikan kontrol yang lebih besar atas alignment seluruh layout.
+
+    Berikut adalah contoh kegunaan grid layout:
+    - Membuat layout halaman web yang kompleks
+    - Mengatur tata letak dashboard
+    - Membuat sistem grid untuk desain yang konsisten
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan _checklist_ di atas secara _step-by-step_ (bukan hanya sekadar mengikuti tutorial)!
+
+    **JAWAB**:
+
+    a. Untuk mengimplementasikan edit dan delete product, sama seperti fungsi-fungsi sebelumnya, setelah saya men-_define_ di `views.py` seperti berikut:
+
+    ```python
+        def edit_product(request, id):
+            product = Product.objects.get(pk=id)
+            form = ProductForm(request.POST or None, instance=product)
+
+            if form.is_valid() and request.method == "POST":
+                form.save()
+                return HttpResponseRedirect(reverse('main:show_main'))
+            
+            context = {'form': form}
+            return render(request, 'edit_product.html', context)
+
+        def delete_product(request, id):
+            product = Product.objects.get(pk=id)
+            product.delete()
+            return HttpResponseRedirect(reverse('main:show_main'))
+    ```
+
+    Saya memasukkan kedua fungsi tersebut ke URLPATTERNS di `urls.py`.
+
+    b. Setelah itu, saya memastikan bahwa saya sudah menambahkan tag `<meta name="viewport">` di `templates/base.html` yang berada di root project.
+
+    c. Masih di file yang sama, karena saya memutuskan untuk menggunakan tailwind, saya menambahkan tag script sebagai berikut:
+
+    ```css
+        <script src="https://cdn.tailwindcss.com">
+    ```
+
+    d. Setelah itu, saya menambahkan _navigation bar_ dengan menambahkan `navbar.html` di folder `templates/` yang berada di root directory. Sesuai yang diajarkan di tutorial, saya juga membuat konfigurasi navbar untuk tampilan _mobile_ agar situs saya responsif. 
+
+    e. Kemudian, saya menautkan navbar tersebut ke `main.html`, `create_product.html` dan `edit_product.html` yang berada di subdirektori `main/templates/` menggunakan tag `include`.
+
+    f. Setelah itu, saya menambahkan _middleware_ WhiteNoise pada `settings.py`.
+
+    g. Masih di file yang sama, saya menambahkan potongan kode berikut:
+
+    ```python
+        STATIC_URL = '/static/'
+        if DEBUG:
+            STATICFILES_DIRS = [
+                BASE_DIR / 'static'
+            ]
+        else:
+            STATIC_ROOT = BASE_DIR / 'static' 
+    ```
+    Potongan kode diatas berfungsi untuk mengelola file statis yang nanti akan saya gunakan.
+
+    h. Setelah itu, saya membuat folder `static/css` pada root directory, yang kemudian saya isi dengan `global.css` dimana saya bisa menambahkan kelas _custom_ atau _style_ css buatan saya sendiri. Kemudian, saya membuat beberapa _custom style_ yang nanti akan saya gunakan.
+
+    i. Kemudian, saya menambahkan tag `link` pada `base.html`agar dapat menggunakan `global.css` yang tadi saya buat. 
+
+    ```css
+        <link rel="stylesheet" href="{% static 'css/global.css' %}"/>
+    ```
+
+    j. Setelah itu, saya melakukan styling pada file `login.html`, `register.html`, `main.html`, `create_product.html`, dan `edit_product.html` menggunakan Tailwind.
+
+    k. Lalu, saya menyesuaikan file `main.html` saya yang berada di subdirektori `main/templates`. Saya menambahkan tombol untuk melakukan operasi _delete_ dan _edit_ pada kartu produk.
+
+    l. Kemudian, saya membuat `card_info.html` yang berada di `main/templates` yang berisi seperti berikut:
+
+    ```html
+        <div class="bg-orange-600 rounded-xl overflow-hidden border-2 border-orange-700">
+        <div class="p-4 animate-shine">
+            <h5 class="text-lg font-semibold text-gray-100">{{ title }}</h5>
+            <p class="text-white">{{ value }}</p>
+        </div>
+        </div>
+    ```
+
+    m. Setelah itu, saya membuat `product_desc.html` di folder yang sama untuk menampilkan kartu produk yang akan saya tampilkan di `main.html`. Saya juga menggunakan icon berupa gambar kodok pepe sedih yang saya masukkan di `static/image` yang akan ditampilkan ketika belum ada produk saya tambahkan. Kodenya sebagai berikut:
+
+    ```html
+        ...
+        {% if not products %}
+        <div class="flex flex-col items-center justify-center min-h-[24rem] p-6 bg-white rounded-lg shadow-md fade-in">
+            <img src="{% static 'images/sadpepe.png' %}" alt="Sad Pepe" class="w-64 h-64 mb-4 transform hover:scale-105 transition-transform duration-300"/>
+            <p class="text-center text-gray-800 mt-4 text-xl font-semibold">Belum ada data produk pada Morehub!</p>
+            <p class="text-center text-gray-600 mt-2">Tambahkan produk pertama Anda sekarang!</p>
+        </div>
+        {% else %}
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+            {% for product_entry in products %}
+                <div class="card fade-in" style="animation-delay: {{ forloop.counter0 }}00ms;">
+                    {% include 'product_desc.html' with product_entry=product_entry %}
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        ...
+    ```
+
+    n. Terakhir, saya me-_refactor_ style yang saya buat kedalam `global.css` agar kode saya terlihat lebih rapi.
+    
 
 
 
 
 
+
+
+
+    
+
+    
 
 
 

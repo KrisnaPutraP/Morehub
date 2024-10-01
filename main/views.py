@@ -1,7 +1,7 @@
 import datetime
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from main.forms import ProductForm
 from main.models import Product
 from django.http import HttpResponse
@@ -14,6 +14,13 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url='/login')
 def show_main(request):
     products = Product.objects.filter(user=request.user)
+    cookie = request.COOKIES.get('last_login')
+
+    if cookie:
+        last_login = datetime.datetime.strptime(cookie, "%Y-%m-%d %H:%M:%S.%f")
+    else:
+        return redirect('main:login')
+
     context = {
         'my_name': 'Krisna Putra Purnomo',
         'NPM': '2306228756',
@@ -21,7 +28,7 @@ def show_main(request):
         'name': request.user.username,
         'title': 'Keeps you coming for more!',
         'products': products,
-        'last_login': request.COOKIES['last_login']
+        'last_login': last_login
     }
 
     return render(request, "main.html", context)
@@ -30,9 +37,9 @@ def create_product(request):
     form = ProductForm(request.POST or None)
 
     if form.is_valid() and request.method == "POST":
-        mood_entry = form.save(commit=False)
-        mood_entry.user = request.user
-        mood_entry.save()
+        product_entry = form.save(commit=False)
+        product_entry.user = request.user
+        product_entry.save()
         return redirect('main:show_main')
     
     context = {'form': form}
@@ -88,3 +95,18 @@ def logout_user(request):
     response.delete_cookie('last_login')
     return response
 
+def edit_product(request, id):
+    product = Product.objects.get(pk=id)
+    form = ProductForm(request.POST or None, instance=product)
+
+    if form.is_valid() and request.method == "POST":
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+    
+    context = {'form': form}
+    return render(request, 'edit_product.html', context)
+
+def delete_product(request, id):
+    product = Product.objects.get(pk=id)
+    product.delete()
+    return HttpResponseRedirect(reverse('main:show_main'))
