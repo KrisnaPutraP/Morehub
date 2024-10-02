@@ -26,7 +26,7 @@
                                 <span class="ml-2 text-gray-700">Featured</span>
                             </div>
                         {% else %}
-                            <input type="{{ field.field.widget.input_type }}" name="{{ field.name }}" id="{{ field.id_for_label }}" 
+                            <input type="{{ field.widget.input_type }}" name="{{ field.name }}" id="{{ field.id_for_label }}" 
                                    class="w-full border border-gray-300 focus:border-orange-500 focus:ring focus:ring-orange-300 rounded-md p-2" 
                                    placeholder="Enter {{ field.label|lower }}" value="{{ field.value|default_if_none:'' }}">
                         {% endif %}
