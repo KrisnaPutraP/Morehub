@@ -11,7 +11,7 @@
 <div class="overflow-x-hidden px-4 md:px-8 pb-8 pt-24 min-h-screen bg-gray-100 flex flex-col bg-pattern">
   <div class="p-2 mb-6 relative">
     <div class="mb-4 text-center">
-      <h2 class="text-4xl font-extrabold text-orange-800 drop-shadow-md relative inline-block">
+      <h2 class="page-title">
         A Platform Based Programming Project, Made By:
         <span class="absolute -bottom-2 left-0 w-full h-1 bg-orange-500 transform scale-x-0 transition-transform duration-300 origin-left group-hover:scale-x-100"></span>
       </h2>
@@ -94,7 +94,7 @@
       </div>
       <!-- Modal footer -->
       <div class="flex justify-end p-6 border-t border-gray-200 rounded-b bg-gradient-to-br from-orange-100 to-orange-200">
-        <button type="button" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-lg mr-2 transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg btn-wobble" id="cancelButton">Cancel</button>
+        <button type="button" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-lg mr-2 transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg" id="cancelButton">Cancel</button>
         <button type="submit" id="submitProduct" form="productForm" class="w-full sm:w-auto py-3 px-6 bg-orange-600 text-white font-bold rounded-lg hover:bg-orange-700 transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 shadow-lg hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-orange-300 btn-ripple">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
@@ -202,9 +202,9 @@
             const y = (e.clientY - top) / height;
             card.style.transform = `
                 perspective(1000px)
-                rotateY(${(x - 0.5) * 10}deg)
-                rotateX(${(y - 0.5) * -10}deg)
-                translateZ(20px)
+                rotateY(${(x - 0.8) * 10}deg)
+                rotateX(${(y - 0.8) * -10}deg)
+                translateZ(30px)
             `;
         });
         card.addEventListener('mouseleave', () => {
