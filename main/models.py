@@ -10,7 +10,7 @@ class Product(models.Model):
     description = models.TextField()
     quantity = models.IntegerField()
     category = models.CharField(max_length=100)
-    featured = models.BooleanField()
+    featured = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name

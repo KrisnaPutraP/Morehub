@@ -13,9 +13,9 @@
       <!-- Desktop menu -->
       <div class="hidden md:flex items-center space-x-4">
         <a href="{% url 'main:show_main' %}" class="text-white hover:bg-red-700 px-3 py-2 rounded-md text-sm font-medium">Home</a>
-        <a href="#" class="text-white hover:bg-red-700 px-3 py-2 rounded-md text-sm font-medium">Featured</a>
-        <a href="#" class="text-white hover:bg-red-700 px-3 py-2 rounded-md text-sm font-medium">Categories</a>
-        <a href="#" class="text-white hover:bg-red-700 px-3 py-2 rounded-md text-sm font-medium">Cart</a>
+        <a href="#" class="text-white hover:bg-red-700 px-3 py-2 rounded-md text-sm font-medium">Featured</a> <!-- Belum implement :( -->
+        <a href="#" class="text-white hover:bg-red-700 px-3 py-2 rounded-md text-sm font-medium">Categories</a> <!-- Belum implement :( -->
+        <a href="#" class="text-white hover:bg-red-700 px-3 py-2 rounded-md text-sm font-medium">Cart</a> <!-- Belum implement :( -->
         {% if user.is_authenticated %}
           <div class="welcome-container relative group">
             <span class="text-white font-semibold py-2 px-4 rounded-full bg-orange-600 transition-all duration-300 group-hover:bg-orange-700">

@@ -122,18 +122,18 @@ def add_product_ajax(request):
     description = strip_tags(request.POST.get("description"))
     quantity = request.POST.get("quantity")
     category = strip_tags(request.POST.get("category"))
-    featured = request.POST.get("featured")
+    featured = request.POST.get("featured") == "on"
     
     user = request.user
 
     new_product = Product(
-        user=user,
         name=name,
         price=price,
         description=description,
         quantity=quantity,
         category=category,
-        featured=featured
+        featured=featured,
+        user=user
     )
     new_product.save()
 
