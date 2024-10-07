@@ -100,6 +100,14 @@
     background: linear-gradient(90deg, transparent, #f97316, transparent);
     margin: 0.5rem auto;
   }
+
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+  }
+
   .card {
     transition: all 0.3s ease;
   }
@@ -107,6 +115,16 @@
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   }
+
+  .footer {
+    background: linear-gradient(90deg, #f97316, #fdba74);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+  }
+
 
   @keyframes float {
     0% { transform: translateY(0px); }
