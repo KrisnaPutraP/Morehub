@@ -64,6 +64,7 @@
   .fade-in {
     animation: fadeIn 1s ease-out forwards;
   }
+
   .bg-pattern {
     background-color: #fff8f0;
     background-image: 
@@ -77,6 +78,7 @@
     background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
     animation: patternShift 60s linear infinite;
   }
+  
   @keyframes patternShift {
     0% { background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px; }
     100% { background-position: 80px 140px, 80px 140px, 120px 210px, 120px 210px, 80px 140px, 120px 210px; }
